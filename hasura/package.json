@@ -1,0 +1,14 @@
+{
+  "name": "hasura-cli",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "hasura console --admin-secret myadminsecretkey"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "hasura-cli": "^2.30.0"
+  }
+}

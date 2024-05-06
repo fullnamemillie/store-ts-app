@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "title": "iPhone 15 Pro",
+    "description": "The ultimate iPhone.",
+    "price": 999,
+    "image": "iphone-15_pro-blue.jpg"
+  },
+  {
+    "id": 2,
+    "title": "iPhone 15 Plus",
+    "description": "A total powerhouse.",
+    "price": 899,
+    "image": "iphone-15_plus-pink.jpg"
+  },
+  {
+    "id": 3,
+    "title": "iPhone 15",
+    "description": "A total powerhouse.",
+    "price": 799,
+    "image": "iphone-15-black.jpg"
+  },
+  {
+    "id": 4,
+    "title": "iPhone 14",
+    "description": "As amazing as ever.",
+    "price": 699,
+    "image": "iphone-14-blue.jpeg"
+  },
+  {
+    "id": 5,
+    "title": "iPhone 13",
+    "description": "All kinds of awesome.",
+    "price": 599,
+    "image": "iphone-13-green.jpg"
+  },
+  {
+    "id": 6,
+    "title": "iPhone 12",
+    "description": "Blast past fast",
+    "price": 499,
+    "image": "iphone-12-white.jpg"
+  },
+  {
+    "id": 7,
+    "title": "iPhone SE",
+    "description": "Serious power. Serious value.",
+    "price": 429,
+    "image": "iphone-se-black.jpg"
+  }
+]

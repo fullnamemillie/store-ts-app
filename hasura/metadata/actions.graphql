@@ -1,0 +1,48 @@
+type Query {
+  adminGetMe: AdminGetMeOutput
+}
+
+type Query {
+  adminLogin(
+    admin: AdminLoginInput!
+  ): AdminLoginOutput
+}
+
+type Mutation {
+  adminRegister(
+    admin: AdminRegisterInput!
+  ): AdminRegisterOutput
+}
+
+input AdminRegisterInput {
+  username: String!
+  password: String!
+}
+
+input adminLoginInput {
+  username: String!
+  password: String!
+}
+
+input AdminLoginInput {
+  username: String!
+  password: String!
+}
+
+type AdminRegisterOutput {
+  accessToken: String!
+}
+
+type adminLoginOutput {
+  accessToken: String!
+}
+
+type AdminLoginOutput {
+  accessToken: String!
+}
+
+type AdminGetMeOutput {
+  id: String!
+  username: String!
+}
+
