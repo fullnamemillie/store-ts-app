@@ -1,9 +1,9 @@
 import {
   Datagrid,
   List,
-  NumberField,
   TextField,
   FunctionField,
+  EditButton,
 } from 'react-admin';
 import MenuListExpand from '@/components/Menu/MenuList/MenuListExpand';
 import { Menu } from '@/types/sdk';
@@ -16,7 +16,7 @@ export const MenuList = () => (
         label="Price"
         render={(record: Menu) => `${record.price} $`}
       />
-      <NumberField source="price" />
+      <EditButton />
     </Datagrid>
   </List>
 );
