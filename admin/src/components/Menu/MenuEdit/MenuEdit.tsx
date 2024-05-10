@@ -1,13 +1,13 @@
 import { Edit, NumberInput, SimpleForm, TextInput } from 'react-admin';
+import MenuEditTitle from './MenuEditTitle';
 
 export const MenuEdit = () => (
-  <Edit>
+  <Edit title={<MenuEditTitle />}>
     <SimpleForm>
-      <TextInput source="id" disabled fullWidth />
-      <TextInput source="title" fullWidth />
-      <NumberInput source="price" fullWidth />
-      <TextInput source="description" fullWidth />
-      <TextInput source="image" fullWidth />
+      <TextInput source="title" label="Title" fullWidth />
+      <NumberInput source="price" label="Price" fullWidth />
+      <TextInput source="description" label="Description" fullWidth />
+      <TextInput source="image" label="Image" fullWidth />
     </SimpleForm>
   </Edit>
 );

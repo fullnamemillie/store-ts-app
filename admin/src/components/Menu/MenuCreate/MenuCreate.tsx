@@ -1,13 +1,12 @@
 import { Create, NumberInput, SimpleForm, TextInput } from 'react-admin';
 
 export const MenuCreate = () => (
-  <Create>
+  <Create title="Create new item">
     <SimpleForm>
-      <TextInput source="id" disabled />
-      <TextInput source="title" />
-      <NumberInput source="price" />
-      <TextInput source="description" />
-      <TextInput source="image" />
+      <TextInput source="title" label="Title" fullWidth />
+      <NumberInput source="price" label="Price" fullWidth />
+      <TextInput source="description" label="Description" fullWidth />
+      <TextInput source="image" label="Image" fullWidth />
     </SimpleForm>
   </Create>
 );

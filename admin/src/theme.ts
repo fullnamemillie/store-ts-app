@@ -1,6 +1,9 @@
 import { ThemeOptions } from '@mui/material';
 
 export const theme: ThemeOptions = {
+  typography: {
+    fontFamily: 'Arial, sans-serif',
+  },
   palette: {
     mode: 'light',
     primary: {
