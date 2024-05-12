@@ -1,35 +1,22 @@
-import { GraphQLClient, RequestOptions } from 'graphql-request';
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-export type MakeEmpty<
-  T extends { [key: string]: unknown },
-  K extends keyof T
-> = { [_ in K]?: never };
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
-    };
-type GraphQLClientRequestHeaders = RequestOptions['requestHeaders'];
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
-  numeric: { input: any; output: any };
-  uuid: { input: any; output: any };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  numeric: { input: any; output: any; }
+  uuid: { input: any; output: any; }
 };
 
 export type AdminGetMeOutput = {
@@ -56,6 +43,15 @@ export type AdminRegisterInput = {
 export type AdminRegisterOutput = {
   __typename?: 'AdminRegisterOutput';
   accessToken: Scalars['String']['output'];
+};
+
+export type CloudinarySignatureOutput = {
+  __typename?: 'CloudinarySignatureOutput';
+  apiKey: Scalars['String']['output'];
+  cloudName: Scalars['String']['output'];
+  publicId: Scalars['String']['output'];
+  signature: Scalars['String']['output'];
+  timestamp: Scalars['Int']['output'];
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -114,6 +110,7 @@ export type Admin_Aggregate_Fields = {
   min?: Maybe<Admin_Min_Fields>;
 };
 
+
 /** aggregate fields of "admin" */
 export type Admin_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Admin_Select_Column>>;
@@ -135,7 +132,7 @@ export enum Admin_Constraint {
   /** unique or primary key constraint on columns "id" */
   AdminPkey = 'admin_pkey',
   /** unique or primary key constraint on columns "username" */
-  AdminUsernameKey = 'admin_username_key',
+  AdminUsernameKey = 'admin_username_key'
 }
 
 /** input type for inserting data into table "admin" */
@@ -196,7 +193,7 @@ export enum Admin_Select_Column {
   /** column name */
   Password = 'password',
   /** column name */
-  Username = 'username',
+  Username = 'username'
 }
 
 /** input type for updating data in table "admin" */
@@ -228,7 +225,7 @@ export enum Admin_Update_Column {
   /** column name */
   Password = 'password',
   /** column name */
-  Username = 'username',
+  Username = 'username'
 }
 
 export type Admin_Updates = {
@@ -243,7 +240,7 @@ export enum Cursor_Ordering {
   /** ascending ordering of the cursor */
   Asc = 'ASC',
   /** descending ordering of the cursor */
-  Desc = 'DESC',
+  Desc = 'DESC'
 }
 
 /** columns and relationships of "menu" */
@@ -279,6 +276,7 @@ export type Menu_Aggregate_Fields = {
   variance?: Maybe<Menu_Variance_Fields>;
 };
 
+
 /** aggregate fields of "menu" */
 export type Menu_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Menu_Select_Column>>;
@@ -306,7 +304,7 @@ export type Menu_Bool_Exp = {
 /** unique or primary key constraints on table "menu" */
 export enum Menu_Constraint {
   /** unique or primary key constraint on columns "id" */
-  MenuPkey = 'menu_pkey',
+  MenuPkey = 'menu_pkey'
 }
 
 /** input type for incrementing numeric columns in table "menu" */
@@ -384,7 +382,7 @@ export enum Menu_Select_Column {
   /** column name */
   Price = 'price',
   /** column name */
-  Title = 'title',
+  Title = 'title'
 }
 
 /** input type for updating data in table "menu" */
@@ -448,7 +446,7 @@ export enum Menu_Update_Column {
   /** column name */
   Price = 'price',
   /** column name */
-  Title = 'title',
+  Title = 'title'
 }
 
 export type Menu_Updates = {
@@ -513,30 +511,36 @@ export type Mutation_Root = {
   update_menu_many?: Maybe<Array<Maybe<Menu_Mutation_Response>>>;
 };
 
+
 /** mutation root */
 export type Mutation_RootAdminRegisterArgs = {
   admin: AdminRegisterInput;
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_AdminArgs = {
   where: Admin_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Admin_By_PkArgs = {
   id: Scalars['uuid']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootDelete_MenuArgs = {
   where: Menu_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootDelete_Menu_By_PkArgs = {
   id: Scalars['uuid']['input'];
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_AdminArgs = {
@@ -544,11 +548,13 @@ export type Mutation_RootInsert_AdminArgs = {
   on_conflict?: InputMaybe<Admin_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Admin_OneArgs = {
   object: Admin_Insert_Input;
   on_conflict?: InputMaybe<Admin_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootInsert_MenuArgs = {
@@ -556,11 +562,13 @@ export type Mutation_RootInsert_MenuArgs = {
   on_conflict?: InputMaybe<Menu_On_Conflict>;
 };
 
+
 /** mutation root */
 export type Mutation_RootInsert_Menu_OneArgs = {
   object: Menu_Insert_Input;
   on_conflict?: InputMaybe<Menu_On_Conflict>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_AdminArgs = {
@@ -568,16 +576,19 @@ export type Mutation_RootUpdate_AdminArgs = {
   where: Admin_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Admin_By_PkArgs = {
   _set?: InputMaybe<Admin_Set_Input>;
   pk_columns: Admin_Pk_Columns_Input;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Admin_ManyArgs = {
   updates: Array<Admin_Updates>;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_MenuArgs = {
@@ -586,12 +597,14 @@ export type Mutation_RootUpdate_MenuArgs = {
   where: Menu_Bool_Exp;
 };
 
+
 /** mutation root */
 export type Mutation_RootUpdate_Menu_By_PkArgs = {
   _inc?: InputMaybe<Menu_Inc_Input>;
   _set?: InputMaybe<Menu_Set_Input>;
   pk_columns: Menu_Pk_Columns_Input;
 };
+
 
 /** mutation root */
 export type Mutation_RootUpdate_Menu_ManyArgs = {
@@ -624,7 +637,7 @@ export enum Order_By {
   /** in descending order, nulls first */
   DescNullsFirst = 'desc_nulls_first',
   /** in descending order, nulls last */
-  DescNullsLast = 'desc_nulls_last',
+  DescNullsLast = 'desc_nulls_last'
 }
 
 export type Query_Root = {
@@ -639,6 +652,8 @@ export type Query_Root = {
   admin_aggregate: Admin_Aggregate;
   /** fetch data from the table: "admin" using primary key columns */
   admin_by_pk?: Maybe<Admin>;
+  /** Cloudinary */
+  cloudinarySignature?: Maybe<CloudinarySignatureOutput>;
   /** fetch data from the table: "menu" */
   menu: Array<Menu>;
   /** fetch aggregated fields from the table: "menu" */
@@ -646,6 +661,7 @@ export type Query_Root = {
   /** fetch data from the table: "menu" using primary key columns */
   menu_by_pk?: Maybe<Menu>;
 };
+
 
 export type Query_RootAdminArgs = {
   distinct_on?: InputMaybe<Array<Admin_Select_Column>>;
@@ -655,9 +671,11 @@ export type Query_RootAdminArgs = {
   where?: InputMaybe<Admin_Bool_Exp>;
 };
 
+
 export type Query_RootAdminLoginArgs = {
   admin: AdminLoginInput;
 };
+
 
 export type Query_RootAdmin_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Admin_Select_Column>>;
@@ -667,9 +685,11 @@ export type Query_RootAdmin_AggregateArgs = {
   where?: InputMaybe<Admin_Bool_Exp>;
 };
 
+
 export type Query_RootAdmin_By_PkArgs = {
   id: Scalars['uuid']['input'];
 };
+
 
 export type Query_RootMenuArgs = {
   distinct_on?: InputMaybe<Array<Menu_Select_Column>>;
@@ -679,6 +699,7 @@ export type Query_RootMenuArgs = {
   where?: InputMaybe<Menu_Bool_Exp>;
 };
 
+
 export type Query_RootMenu_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Menu_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -686,6 +707,7 @@ export type Query_RootMenu_AggregateArgs = {
   order_by?: InputMaybe<Array<Menu_Order_By>>;
   where?: InputMaybe<Menu_Bool_Exp>;
 };
+
 
 export type Query_RootMenu_By_PkArgs = {
   id: Scalars['uuid']['input'];
@@ -711,6 +733,7 @@ export type Subscription_Root = {
   menu_stream: Array<Menu>;
 };
 
+
 export type Subscription_RootAdminArgs = {
   distinct_on?: InputMaybe<Array<Admin_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -718,6 +741,7 @@ export type Subscription_RootAdminArgs = {
   order_by?: InputMaybe<Array<Admin_Order_By>>;
   where?: InputMaybe<Admin_Bool_Exp>;
 };
+
 
 export type Subscription_RootAdmin_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Admin_Select_Column>>;
@@ -727,15 +751,18 @@ export type Subscription_RootAdmin_AggregateArgs = {
   where?: InputMaybe<Admin_Bool_Exp>;
 };
 
+
 export type Subscription_RootAdmin_By_PkArgs = {
   id: Scalars['uuid']['input'];
 };
+
 
 export type Subscription_RootAdmin_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Admin_Stream_Cursor_Input>>;
   where?: InputMaybe<Admin_Bool_Exp>;
 };
+
 
 export type Subscription_RootMenuArgs = {
   distinct_on?: InputMaybe<Array<Menu_Select_Column>>;
@@ -745,6 +772,7 @@ export type Subscription_RootMenuArgs = {
   where?: InputMaybe<Menu_Bool_Exp>;
 };
 
+
 export type Subscription_RootMenu_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Menu_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -753,9 +781,11 @@ export type Subscription_RootMenu_AggregateArgs = {
   where?: InputMaybe<Menu_Bool_Exp>;
 };
 
+
 export type Subscription_RootMenu_By_PkArgs = {
   id: Scalars['uuid']['input'];
 };
+
 
 export type Subscription_RootMenu_StreamArgs = {
   batch_size: Scalars['Int']['input'];
@@ -776,92 +806,146 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
 };
 
-export type AdminGetMeQueryVariables = Exact<{ [key: string]: never }>;
+export type AdminGetMeQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type AdminGetMeQuery = {
-  __typename?: 'query_root';
-  adminGetMe?: {
-    __typename?: 'AdminGetMeOutput';
-    id: string;
-    username: string;
-  } | null;
-};
+
+export type AdminGetMeQuery = { __typename?: 'query_root', adminGetMe?: { __typename?: 'AdminGetMeOutput', id: string, username: string } | null };
 
 export type AdminLoginQueryVariables = Exact<{
   password: Scalars['String']['input'];
   username: Scalars['String']['input'];
 }>;
 
-export type AdminLoginQuery = {
-  __typename?: 'query_root';
-  adminLogin?: { __typename?: 'AdminLoginOutput'; accessToken: string } | null;
-};
+
+export type AdminLoginQuery = { __typename?: 'query_root', adminLogin?: { __typename?: 'AdminLoginOutput', accessToken: string } | null };
+
+export type CloudinarySignatureQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CloudinarySignatureQuery = { __typename?: 'query_root', cloudinarySignature?: { __typename?: 'CloudinarySignatureOutput', apiKey: string, cloudName: string, publicId: string, signature: string, timestamp: number } | null };
+
 
 export const AdminGetMeDocument = gql`
-  query AdminGetMe {
-    adminGetMe {
-      id
-      username
-    }
+    query AdminGetMe {
+  adminGetMe {
+    id
+    username
   }
-`;
-export const AdminLoginDocument = gql`
-  query AdminLogin($password: String!, $username: String!) {
-    adminLogin(admin: { password: $password, username: $username }) {
-      accessToken
-    }
-  }
-`;
-
-export type SdkFunctionWrapper = <T>(
-  action: (requestHeaders?: Record<string, string>) => Promise<T>,
-  operationName: string,
-  operationType?: string,
-  variables?: any
-) => Promise<T>;
-
-const defaultWrapper: SdkFunctionWrapper = (
-  action,
-  _operationName,
-  _operationType,
-  _variables
-) => action();
-
-export function getSdk(
-  client: GraphQLClient,
-  withWrapper: SdkFunctionWrapper = defaultWrapper
-) {
-  return {
-    AdminGetMe(
-      variables?: AdminGetMeQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders
-    ): Promise<AdminGetMeQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<AdminGetMeQuery>(AdminGetMeDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'AdminGetMe',
-        'query',
-        variables
-      );
-    },
-    AdminLogin(
-      variables: AdminLoginQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders
-    ): Promise<AdminLoginQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<AdminLoginQuery>(AdminLoginDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'AdminLogin',
-        'query',
-        variables
-      );
-    },
-  };
 }
-export type Sdk = ReturnType<typeof getSdk>;
+    `;
+
+/**
+ * __useAdminGetMeQuery__
+ *
+ * To run a query within a React component, call `useAdminGetMeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAdminGetMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAdminGetMeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAdminGetMeQuery(baseOptions?: Apollo.QueryHookOptions<AdminGetMeQuery, AdminGetMeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AdminGetMeQuery, AdminGetMeQueryVariables>(AdminGetMeDocument, options);
+      }
+export function useAdminGetMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AdminGetMeQuery, AdminGetMeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AdminGetMeQuery, AdminGetMeQueryVariables>(AdminGetMeDocument, options);
+        }
+export function useAdminGetMeSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AdminGetMeQuery, AdminGetMeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<AdminGetMeQuery, AdminGetMeQueryVariables>(AdminGetMeDocument, options);
+        }
+export type AdminGetMeQueryHookResult = ReturnType<typeof useAdminGetMeQuery>;
+export type AdminGetMeLazyQueryHookResult = ReturnType<typeof useAdminGetMeLazyQuery>;
+export type AdminGetMeSuspenseQueryHookResult = ReturnType<typeof useAdminGetMeSuspenseQuery>;
+export type AdminGetMeQueryResult = Apollo.QueryResult<AdminGetMeQuery, AdminGetMeQueryVariables>;
+export const AdminLoginDocument = gql`
+    query AdminLogin($password: String!, $username: String!) {
+  adminLogin(admin: {password: $password, username: $username}) {
+    accessToken
+  }
+}
+    `;
+
+/**
+ * __useAdminLoginQuery__
+ *
+ * To run a query within a React component, call `useAdminLoginQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAdminLoginQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAdminLoginQuery({
+ *   variables: {
+ *      password: // value for 'password'
+ *      username: // value for 'username'
+ *   },
+ * });
+ */
+export function useAdminLoginQuery(baseOptions: Apollo.QueryHookOptions<AdminLoginQuery, AdminLoginQueryVariables> & ({ variables: AdminLoginQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AdminLoginQuery, AdminLoginQueryVariables>(AdminLoginDocument, options);
+      }
+export function useAdminLoginLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AdminLoginQuery, AdminLoginQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AdminLoginQuery, AdminLoginQueryVariables>(AdminLoginDocument, options);
+        }
+export function useAdminLoginSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AdminLoginQuery, AdminLoginQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<AdminLoginQuery, AdminLoginQueryVariables>(AdminLoginDocument, options);
+        }
+export type AdminLoginQueryHookResult = ReturnType<typeof useAdminLoginQuery>;
+export type AdminLoginLazyQueryHookResult = ReturnType<typeof useAdminLoginLazyQuery>;
+export type AdminLoginSuspenseQueryHookResult = ReturnType<typeof useAdminLoginSuspenseQuery>;
+export type AdminLoginQueryResult = Apollo.QueryResult<AdminLoginQuery, AdminLoginQueryVariables>;
+export const CloudinarySignatureDocument = gql`
+    query CloudinarySignature {
+  cloudinarySignature {
+    apiKey
+    cloudName
+    publicId
+    signature
+    timestamp
+  }
+}
+    `;
+
+/**
+ * __useCloudinarySignatureQuery__
+ *
+ * To run a query within a React component, call `useCloudinarySignatureQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCloudinarySignatureQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCloudinarySignatureQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCloudinarySignatureQuery(baseOptions?: Apollo.QueryHookOptions<CloudinarySignatureQuery, CloudinarySignatureQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CloudinarySignatureQuery, CloudinarySignatureQueryVariables>(CloudinarySignatureDocument, options);
+      }
+export function useCloudinarySignatureLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CloudinarySignatureQuery, CloudinarySignatureQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CloudinarySignatureQuery, CloudinarySignatureQueryVariables>(CloudinarySignatureDocument, options);
+        }
+export function useCloudinarySignatureSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<CloudinarySignatureQuery, CloudinarySignatureQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<CloudinarySignatureQuery, CloudinarySignatureQueryVariables>(CloudinarySignatureDocument, options);
+        }
+export type CloudinarySignatureQueryHookResult = ReturnType<typeof useCloudinarySignatureQuery>;
+export type CloudinarySignatureLazyQueryHookResult = ReturnType<typeof useCloudinarySignatureLazyQuery>;
+export type CloudinarySignatureSuspenseQueryHookResult = ReturnType<typeof useCloudinarySignatureSuspenseQuery>;
+export type CloudinarySignatureQueryResult = Apollo.QueryResult<CloudinarySignatureQuery, CloudinarySignatureQueryVariables>;
